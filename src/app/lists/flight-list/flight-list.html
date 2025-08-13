@@ -1,0 +1,25 @@
+@if (flights.length) {
+  @for (f of flights; track f.callsign_icao) {
+    <mat-card class="flight-card">
+      <mat-card-header>
+        <mat-card-title
+          >{{ f.callsign_iata }} – {{ f.airline.name }}</mat-card-title
+        >
+        <mat-card-subtitle>{{ f.airline.country }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="flight-route-container">
+        <div class="airport">
+          <div class="code">{{ f.origin.iata_code }}</div>
+          <div class="city">{{ f.origin.municipality }}</div>
+        </div>
+        <mat-icon>flight</mat-icon>
+        <div class="airport">
+          <div class="code">{{ f.destination.iata_code }}</div>
+          <div class="city">{{ f.destination.municipality }}</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  }
+} @else {
+  <div class="error-container">{{ errorMessage || "No flights found." }}</div>
+}

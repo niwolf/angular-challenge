@@ -1,0 +1,27 @@
+@if (aircrafts.length) {
+  <mat-grid-list cols="4" rowHeight="1:1">
+    @for (a of aircrafts; track a.mode_s) {
+      <mat-grid-tile>
+        <mat-card class="aircraft-card">
+          <mat-card-header>
+            <mat-card-title>{{ a.mode_s }}</mat-card-title>
+            <mat-card-subtitle
+              >Type: {{ a.type || "Unknown type" }}</mat-card-subtitle
+            >
+          </mat-card-header>
+          <img mat-card-image [src]="a.url_photo || fallbackImage" />
+          <mat-card-content>
+            <p><strong>Manufacturer:</strong> {{ a.manufacturer || "N/A" }}</p>
+            <p>
+              <strong>Owner Country:</strong>
+              {{ a.registered_owner_country_name || "N/A" }}
+            </p>
+            <p><strong>Owner:</strong> {{ a.registered_owner || "N/A" }}</p>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    }
+  </mat-grid-list>
+} @else {
+  <div class="error-container">{{ errorMessage || "No aircrafts found." }}</div>
+}

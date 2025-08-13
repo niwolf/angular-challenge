@@ -1,0 +1,25 @@
+.flight-card {
+  margin: 16px;
+}
+
+.flight-route-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .airport {
+    text-align: center;
+    .code {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .city {
+      font-size: 0.9rem;
+      color: gray;
+    }
+  }
+  mat-icon {
+    transform: rotate(90deg);
+    text-align: center;
+  }
+}

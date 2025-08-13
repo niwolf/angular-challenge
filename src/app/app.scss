@@ -1,0 +1,16 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.search-field {
+  flex: 1;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

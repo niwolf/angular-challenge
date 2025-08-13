@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">Angular Challenge</mat-toolbar>
+
+<div class="search-container">
+  <mat-radio-group [(ngModel)]="searchType">
+    <mat-radio-button value="aircraft">Aircraft</mat-radio-button>
+    <mat-radio-button value="callsign">Callsign</mat-radio-button>
+  </mat-radio-group>
+
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search values (comma separated)</mat-label>
+    <input
+      matInput
+      [(ngModel)]="searchInput"
+      placeholder="e.g. N12345, D-ABCD"
+    />
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="accent"
+    [disabled]="!searchInput.trim()"
+    (click)="search()"
+  >
+    Search
+  </button>
+</div>
+
+@if (loading()) {
+  <div class="loading"><mat-spinner></mat-spinner></div>
+} @else {
+  @if (searchType === "aircraft") {
+    <app-aircraft-list
+      [aircrafts]="aircrafts()"
+      [errorMessage]="errorMessage()"
+      [fallbackImage]="fallbackImage"
+    />
+  } @else {
+    <app-flight-list [flights]="flights()" [errorMessage]="errorMessage()" />
+  }
+}
